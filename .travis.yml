@@ -1,10 +1,10 @@
 language: haskell
 before_install:
 env:
- - GHCVER=7.6.3 CABALVER=1.18
+# - GHCVER=7.6.3 CABALVER=1.18
  - GHCVER=7.8.4 CABALVER=1.18
- - GHCVER=7.10.1 CABALVER=1.22
- - GHCVER=head  CABALVER=head
+# - GHCVER=7.10.1 CABALVER=1.22
+# - GHCVER=head  CABALVER=head
 
 matrix:
   allow_failures:
@@ -17,8 +17,8 @@ before_install:
  - travis_retry sudo apt-get install libpcap-dev
  - travis_retry sudo apt-get install cabal-install-$CABALVER ghc-$GHCVER
  - export PATH=/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$HOME/.cabal/bin:$PATH
- - uname -r
- - sudo apt-get install linux-headers-2.6.32
+- uname -r
+# - sudo apt-get install linux-headers-2.6.32
  - cabal --version
 
 install:
@@ -26,8 +26,11 @@ install:
  - cabal install --only-dependencies --enable-tests
 
 script:
- - cabal configure --enable-tests
- - runhaskell Build.hs install
+ - pwd
+ - sudo cp kernel/linux/* /usr/include/linux/
+ - cd && cd user/C && make && sudo make install
+ - cd && cd user/Haskell && cabal configure --enable-tests && cabal build
+# - runhaskell Build.hs install
 #  --enable-library-coverage || cabal configure --enable-tests --enable-coverage
 # - cabal build
 # - cabal test
