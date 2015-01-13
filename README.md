@@ -7,12 +7,12 @@ hans-pfq
 
 Network ethernet device for HaNS [hans-2.4](https://github.com/GaloisInc/HaNS), which can tap into a real ethernet interface, all using pcap library and preform raw packet reads & writes.
 This is a very naïve implementation, however not much I can be squeeze from pfq.
-Top run requires: root - all because we need to use PFQ.
+Top run requires: root - all because we need to use PFq.
 
 example use:
 
     import Hans.NetworkStack
-    import Hans.Device.PFQ
+    import Hans.Device.PFq
 
     main :: IO ()
     main = do
@@ -21,8 +21,8 @@ example use:
       let mac = Mac 1 2 3 4 5 6
 
       -- device we attach to
-      dev <- pcapOpen "eth0" 
-      addDevice ns mac (pcapSend dev) (pcapReceiveLoop dev)
+      dev <- pfqOpen "eth0" 
+      addDevice ns mac (pfqSend dev) (pfqReceiveLoop dev)
       deviceUp ns mac
 
 
@@ -34,7 +34,7 @@ Install
 =======
 
 ??
-It requires  `libpcap-dev` (as it is required by `pcap`) to run, So on Debian (or simmilar)_
+It requires  `???` (as it is required by `???`) to run, So on Debian (or simmilar)_
 
-	sudo apt-get install libpcap-dev
+	sudo apt-get install ???
  
