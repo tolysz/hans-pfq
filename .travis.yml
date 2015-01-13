@@ -36,8 +36,9 @@ script:
  - cd /home/travis/build/tolysz/hans-pfq && cd PFQ/user/Haskell && cabal configure --enable-tests && cabal install
  - cabal install
  # pfq is intalled time for hans-pfq
- - cd /home/travis/build/tolysz/hans-pfq && cabal configure --enable-tests
+ - cd /home/travis/build/tolysz/hans-pfq
  - cabal install --only-dependencies
+ - cabal configure --enable-tests
  - cabal build
  - cabal test
 
