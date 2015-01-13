@@ -30,8 +30,8 @@ script:
  - tar xf pfq-4.0.tar.gz
  - cd pfq-4.0
  - sudo cp kernel/linux/* /usr/include/linux/
- - cd /home/travis/tolysz/hans-pfq && cd pfq-4.0/user/C && make && sudo make install
- - cd /home/travis/tolysz/hans-pfq && cd pfq-4.0/user/Haskell && cabal configure --enable-tests && cabal install
+ - cd /home/travis/build/tolysz/hans-pfq && cd pfq-4.0/user/C && make && sudo make install
+ - cd /home/travis/build/tolysz/hans-pfq && cd pfq-4.0/user/Haskell && cabal configure --enable-tests && cabal install
  - cabal install
 # - runhaskell Build.hs install
 #  --enable-library-coverage || cabal configure --enable-tests --enable-coverage
