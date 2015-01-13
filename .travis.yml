@@ -27,7 +27,9 @@ install:
 
 script:
  - pwd
- - tar x pfq-4.0.tar.gz
+ - cd
+ - pwd
+ - tar xf pfq-4.0.tar.gz
  - cd pfq-4.0
  - sudo cp kernel/linux/* /usr/include/linux/
  - cd && cd pfq-4.0/user/C && make && sudo make install
