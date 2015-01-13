@@ -1,10 +1,10 @@
 language: haskell
 before_install:
 env:
-# - GHCVER=7.6.3 CABALVER=1.18
+ - GHCVER=7.6.3 CABALVER=1.18
  - GHCVER=7.8.4 CABALVER=1.18
-# - GHCVER=7.10.1 CABALVER=1.22
-# - GHCVER=head  CABALVER=head
+ - GHCVER=7.10.1 CABALVER=1.22
+ - GHCVER=head  CABALVER=head
 
 matrix:
   allow_failures:
@@ -34,11 +34,17 @@ script:
  - cd /home/travis/build/tolysz/hans-pfq && cd PFQ/user/C && make && sudo make install
  - cd /home/travis/build/tolysz/hans-pfq && cd PFQ/user/Haskell && cabal configure --enable-tests && cabal install
  - cabal install
+ # pfq is intalled time for hans-pfq
+ - cd /home/travis/build/tolysz/hans-pfq && cabal configure --enable-tests
+ - cabal install --only-dependencies
+ - cabal build
+ - cabal test
+
 # - runhaskell Build.hs install
 #  --enable-library-coverage || cabal configure --enable-tests --enable-coverage
 # - cabal build
 # - cabal test
 
-after_script:
+#after_script:
 # - cabal install hpc-coveralls
 # - hpc-coveralls --exclude-dir=test test
